@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Formulario Coordinador</title>
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            background-image: url('https://cdn.pixabay.com/photo/2017/09/06/13/29/blue-2721464_1280.jpg');
+            background-size: cover;
+			/* Ajusta el tamaño de la imagen para cubrir el fondo */
+			background-position: center center;
+			/* Centra la imagen en ambas direcciones */
+			background-repeat: no-repeat;
+			/* Evita que la imagen se repita */
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            border-bottom: 3px solid #0056b3;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .main-container {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #495057;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+        }
+
+        .button {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgb(192, 192, 192);
+    /* Color de fondo del pie de página */
+    border-top: 1px solid #dee2e6;
+    /* Línea superior del pie de página */
+}
+
+.footer p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo dentro del pie de página */
+}
+
+.footer i {
+    color: #007bff;
+    /* Color de los íconos en el pie de página */
+}
+
+.footer a {
+    text-decoration: none;
+    /* Elimina el subrayado predeterminado de los enlaces */
+    color: #007bff;
+    /* Color de los enlaces en el pie de página */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse sobre los enlaces */
+}
+
+.footer .copyright {
+    font-weight: bold;
+}
+
+.footer .contact-info {
+    margin-top: 10px;
+}
+
+.footer .contact-info p {
+    margin: 5px 0;
+}
+
+.footer .social-icons {
+    margin-top: 15px;
+}
+
+.footer .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.footer .social-icons a:hover {
+    color: #0056b3;
+}
+
+.footer .disclaimer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.footer .additional-content {
+    margin-top: 20px;
+}
+
+.footer .additional-content h3 {
+    color: #333;
+}
+
+.footer .additional-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer .additional-content li {
+    margin-bottom: 5px;
+}
+
+.footer .additional-content a {
+    color: #007bff;
+}
+
+.footer .additional-content a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+    <!-- Barra de Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/home/}">TicketTechPro</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/coordinadores/}">Administradores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/estudiantes/}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/tickets}">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+<main class="main-container">
+		<div>
+			<div>
+				<h1>AGREGAR COORDINADOR</h1>
+				<form th:action="@{/coordinadores/salvar}" th:object="${coordinador}" method="post">
+					<input type="hidden" th:field="*{id}">
+					<div class="form-group">
+						<label for="nombre">Nombre: </label>
+						<input type="text" class="form-control entrada" id="nombre" th:field="*{nombre}"
+							placeholder="Nombre" required>
+					</div>
+					<div class="form-group">
+						<label for="apellidos">Apellidos: </label>
+						<input type="text" class="form-control entrada" id="apellidos" th:field="*{apellidos}"
+							placeholder="Apellidos" required>
+					</div>
+					<div class="form-group">
+						<label for="documento">Documento: </label>
+						<input type="text" class="form-control entrada" id="documento" th:field="*{documento}"
+							placeholder="Documento" required>
+					</div>
+					<div class="form-group">
+						<label for="celular">Celular: </label>
+						<input type="text" class="form-control entrada" id="celular" th:field="*{celular}"
+							placeholder="Celular" required>
+					</div>
+					<div class="form-group">
+						<label for="user">Usuario: </label>
+						<input type="text" class="form-control entrada" id="user" th:field="*{user}"
+							placeholder="Usuario" required>
+					</div>
+					<div class="form-group">
+						<label for="password">contraseña: </label>
+						<input type="text" class="form-control entrada" id="password" th:field="*{password}"
+							placeholder="Contraseña" required>
+					</div>
+					<div class="form-group">
+						<button class="button" type="submit">Agregar</button>
+					</div>
+			</div>
+			</form>
+		</div>
+	</main>
+    
+    <div class="footer">
+    <p class="copyright">&copy; 2023 Sistema de Gestión de Tickets | <a href="mailto:info@sistemadetickets.com"><i class="fas fa-envelope"></i> info@sistemadetickets.com</a></p>
+    
+    <div class="contact-info">
+        <p>Dirección: 123 Calle Principal, Ciudad</p>
+        <p>Teléfono: +123 456 789</p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/tuempresa" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p class="disclaimer">Este sitio es solo para fines demostrativos. Todos los derechos reservados.</p>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

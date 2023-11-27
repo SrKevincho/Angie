@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Resultados estudiante</title>
+	<!-- Enlace a Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+	<!-- Popper.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<!-- Font Awesome for icons -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	<!-- Estilos Personalizados -->
+	<style>
+		body {
+			font-family: 'Arial', sans-serif;
+			background-color: #f8f9fa;
+			background-image: url('https://cdn.pixabay.com/photo/2017/09/06/13/29/blue-2721464_1280.jpg');
+			background-size: cover;
+			/* Ajusta el tamaño de la imagen para cubrir el fondo */
+			background-position: center center;
+			/* Centra la imagen en ambas direcciones */
+			background-repeat: no-repeat;
+			/* Evita que la imagen se repita */
+			
+		}
+
+		header {
+			background-color: #007bff;
+			color: #fff;
+			padding: 10px 0;
+		}
+
+		main {
+			background-color: #fff;
+			border-radius: 10px;
+			padding: 20px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			margin-top: 20px;
+		}
+
+		h1 {
+			color: #007bff;
+		}
+
+		.btn-primary {
+			background-color: #007bff;
+			border-color: #007bff;
+		}
+
+		.btn-primary:hover {
+			background-color: #0056b3;
+			border-color: #0056b3;
+		}
+
+		.table-responsive {
+			overflow-x: auto;
+		}
+
+		.table {
+			border-radius: 10px;
+			overflow: hidden;
+			width: 100%;
+			margin-bottom: 0;
+			border-collapse: collapse;
+		}
+
+		.table thead th {
+			background-color: #007bff;
+			color: #fff;
+			border-color: #007bff;
+			font-weight: bold;
+		}
+
+		.table tbody td {
+			border-color: #dee2e6;
+		}
+
+		.table tbody tr:hover {
+			background-color: rgba(0, 0, 0, 0.075);
+		}
+
+		.table td,
+		.table th {
+			padding: 12px;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		.navbar {
+			border-bottom: 3px solid #0056b3;
+		}
+
+		.navbar-brand {
+			font-size: 24px;
+			font-weight: bold;
+		}
+
+		.footer {
+			text-align: center;
+			margin-top: 40px;
+			padding: 20px;
+			background-color: rgb(192, 192, 192);
+			/* Color de fondo del pie de página */
+			border-top: 1px solid #dee2e6;
+			/* Línea superior del pie de página */
+		}
+
+		.footer p {
+			margin: 0;
+			/* Elimina el margen predeterminado del párrafo dentro del pie de página */
+		}
+
+		.footer i {
+			color: #007bff;
+			/* Color de los íconos en el pie de página */
+		}
+
+		.footer a {
+			text-decoration: none;
+			/* Elimina el subrayado predeterminado de los enlaces */
+			color: #007bff;
+			/* Color de los enlaces en el pie de página */
+		}
+
+		.footer a:hover {
+			text-decoration: underline;
+			/* Subrayado al pasar el mouse sobre los enlaces */
+		}
+
+		.footer .copyright {
+			font-weight: bold;
+		}
+
+		.footer .contact-info {
+			margin-top: 10px;
+		}
+
+		.footer .contact-info p {
+			margin: 5px 0;
+		}
+
+		.footer .social-icons {
+			margin-top: 15px;
+		}
+
+		.footer .social-icons a {
+			display: inline-block;
+			margin: 0 10px;
+			font-size: 18px;
+			color: #007bff;
+		}
+
+		.footer .social-icons a:hover {
+			color: #0056b3;
+		}
+
+		.footer .disclaimer {
+			margin-top: 15px;
+			font-size: 12px;
+			color: #555;
+		}
+
+		.footer .additional-content {
+			margin-top: 20px;
+		}
+
+		.footer .additional-content h3 {
+			color: #333;
+		}
+
+		.footer .additional-content ul {
+			list-style: none;
+			padding: 0;
+			margin: 10px 0;
+		}
+
+		.footer .additional-content li {
+			margin-bottom: 5px;
+		}
+
+		.footer .additional-content a {
+			color: #007bff;
+		}
+
+		.footer .additional-content a:hover {
+			text-decoration: underline;
+		}
+		
+		.student-details {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%; /* Adjust the width as needed */
+        max-width: 600px; /* Set a maximum width if desired */
+        
+    }
+
+    .student-details p {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #343a40;
+        
+    }
+
+    .anulado-message {
+        color: #dc3545;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+
+    .anulado-message p {
+        margin: 5px 0;
+        font-size: 14px;
+    }
+    
+    .main-container {
+        max-width: 500px;
+        width: 100%;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-container h2 {
+        text-align: center;
+        color: #343a40;
+        margin-bottom: 20px;
+    }
+	</style>
+</head>
+
+<body>
+
+	<!-- Barra de Navegación -->
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container">
+				<a class="navbar-brand" th:href="@{/home/}">TicketTechPro</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" th:href="@{/}">Cerrar Sesión</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+    <center>
+	<div th:if="${calificacion != null}" class="main-container">
+		<h1>Datos del estudiante</h1>
+    <p th:text="'Primer Nombre: ' + ${calificacion.estudiante.primerNombre}"></p>
+    <p th:text="'Primer Apellido: ' + ${calificacion.estudiante.primerApellido}"></p>
+    <p th:text="'Numero Documento: ' + ${calificacion.estudiante.numeroDocumento}"></p>
+    <p th:text="'Numero Registro: ' + ${calificacion.estudiante.numeroRegistro}"></p>
+
+    <div th:if="${calificacion.anulado == 'si'}" class="anulado-message">
+        <!-- You can add a message or styling for anulado state here -->
+        <p>Este registro ha sido anulado.</p>
+    </div>
+</div>
+</center>
+
+	<main class="mt-4">
+		<div class="container">
+			<h1 class="mb-4">Lista de Tickets</h1>
+
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Título</th>
+						<th scope="col">Descripción</th>
+						<th scope="col">Prioridad</th>
+						<th scope="col">Estado</th>
+						<th scope="col">Categoría</th>
+						<th scope="col">Asignado</th>
+						<th scope="col">Comentarios</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="ticket : ${tickets}">
+						<td th:text="${ticket.title}"></td>
+						<td th:text="${ticket.description}"></td>
+						<td th:text="${ticket.priority}"></td>
+						<td th:text="${ticket.ticketStatus}"></td>
+						<td th:text="${ticket.category}"></td>
+						<td th:text="${ticket.assignedTo}"></td>
+						<td th:text="${ticket.comments}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+	
+	<div class="footer">
+    <p class="copyright">&copy; 2023 Sistema de Gestión de Tickets | <a href="mailto:info@sistemadetickets.com"><i class="fas fa-envelope"></i> info@sistemadetickets.com</a></p>
+    
+    <div class="contact-info">
+        <p>Dirección: 123 Calle Principal, Ciudad</p>
+        <p>Teléfono: +123 456 789</p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/tuempresa" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p class="disclaimer">Este sitio es solo para fines demostrativos. Todos los derechos reservados.</p>
+</div>
+
+    <!-- Enlace a Bootstrap JS y Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
