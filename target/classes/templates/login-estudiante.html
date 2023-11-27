@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Iniciar Sesión - Estudiante</title>
+    <meta charset="utf-8">
+    <!-- Agrega el enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Agrega el enlace a FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4; /* Color de fondo general */
+        }
+
+        .login-container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+
+        .brand-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brand-logo a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .brand-logo img {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h2 {
+            color: #007bff; /* Color del encabezado */
+        }
+
+        .login-header p {
+            color: #6c757d; /* Color del texto del encabezado */
+        }
+
+        .grupo {
+            margin-bottom: 25px;
+        }
+
+        .grupo label {
+            font-weight: bold;
+            color: #343a40; /* Color del texto de las etiquetas */
+        }
+
+        .grupo input {
+            border-radius: 5px;
+            border: 1px solid #ced4da; /* Borde de los campos de entrada */
+        }
+
+        .grupo-b {
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Color del botón */
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Cambio de color al pasar el ratón sobre el botón */
+            border-color: #0056b3;
+        }
+
+        .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgb(192, 192, 192);
+    /* Color de fondo del pie de página */
+    border-top: 1px solid #dee2e6;
+    /* Línea superior del pie de página */
+}
+
+.footer p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo dentro del pie de página */
+}
+
+.footer i {
+    color: #007bff;
+    /* Color de los íconos en el pie de página */
+}
+
+.footer a {
+    text-decoration: none;
+    /* Elimina el subrayado predeterminado de los enlaces */
+    color: #007bff;
+    /* Color de los enlaces en el pie de página */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse sobre los enlaces */
+}
+
+.footer .copyright {
+    font-weight: bold;
+}
+
+.footer .contact-info {
+    margin-top: 10px;
+}
+
+.footer .contact-info p {
+    margin: 5px 0;
+}
+
+.footer .social-icons {
+    margin-top: 15px;
+}
+
+.footer .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.footer .social-icons a:hover {
+    color: #0056b3;
+}
+
+.footer .disclaimer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.footer .additional-content {
+    margin-top: 20px;
+}
+
+.footer .additional-content h3 {
+    color: #333;
+}
+
+.footer .additional-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer .additional-content li {
+    margin-bottom: 5px;
+}
+
+.footer .additional-content a {
+    color: #007bff;
+}
+
+.footer .additional-content a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+	
+    <div class="container login-container">
+    <div class="col-md-8 offset-md-2">
+        <div class="brand-logo">
+            <a href="#" title="Inicio">
+                <img src="https://img.freepik.com/vector-gratis/nino-perfil-telefono-inteligente-chat-emoji_24877-53902.jpg?w=740&t=st=1700357609~exp=1700358209~hmac=9a76563df19573508293d2e8bdae7e71eb3acb66c811062b5620b00c1fc14c54"
+                    alt="Logo de la empresa">
+            </a>
+        </div>
+        <div class="login-header">
+            <h2>Bienvenido al Sistema de Gestión de Tickets</h2>
+            <p>Accede como cliente para realizar seguimiento de tus solicitudes y recibir actualizaciones.</p>
+        </div>
+        <form action="/estudiantes/ingresar" method="post">
+            <div class="form-group grupo">
+                <label for="numeroDocumento"><i class="fas fa-id-card"></i> Número Documento:</label>
+                <input class="form-control" type="text" id="numeroDocumento" name="numeroDocumento"
+                    placeholder="Tu Documento" required>
+            </div>
+            <div class="form-group grupo">
+                <label for="numeroRegistro"><i class="fas fa-lock"></i> Contraseña:</label>
+                <input class="form-control" type="password" id="numeroRegistro" name="numeroRegistro"
+                    placeholder="Tu Número de Registro" required>
+            </div>
+            <div class="form-group grupo">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="showPassword" onchange="togglePassword()">
+                    <label class="custom-control-label" for="showPassword">Mostrar contraseña</label>
+                </div>
+            </div>
+            <div th:if="${authenticationFailed}" style="color: red;">
+                <p th:text="${errorMessage}"></p>
+            </div>
+            <div class="form-group grupo-b">
+                <button class="btn btn-primary btn-block" type="submit">Iniciar Sesión</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <p>¿No tienes una cuenta? <a href="#">Regístrate aquí</a></p>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            var passwordField = document.getElementById("numeroRegistro");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+    </script>
+</div>
+
+
+    <div class="footer">
+    <p class="copyright">&copy; 2023 Sistema de Gestión de Tickets | <a href="mailto:info@sistemadetickets.com"><i class="fas fa-envelope"></i> info@sistemadetickets.com</a></p>
+    
+    <div class="contact-info">
+        <p>Dirección: 123 Calle Principal, Ciudad</p>
+        <p>Teléfono: +123 456 789</p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/tuempresa" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p class="disclaimer">Este sitio es solo para fines demostrativos. Todos los derechos reservados.</p>
+</div>
+
+    <!-- Agrega el enlace a Bootstrap JS y jQuery (necesario para algunos componentes de Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

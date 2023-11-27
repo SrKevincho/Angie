@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/login-general.css">
+	<style>
+		body {
+			background-color: #f8f9fa;
+			color: #343a40;
+			background-image: url('https://cdn.pixabay.com/photo/2016/09/01/19/13/background-1637197_1280.jpg');
+			background-size: cover;
+			/* Ajusta el tamaño de la imagen para cubrir el fondo */
+			background-position: center center;
+			/* Centra la imagen en ambas direcciones */
+			background-repeat: no-repeat;
+			/* Evita que la imagen se repita */
+		}
+
+		.container {
+			margin-top: 50px;
+		}
+
+		.card {
+			text-align: center;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s;
+			min-height: 300px;
+		}
+
+		.card:hover {
+			transform: scale(1.05);
+		}
+
+		.icon {
+			font-size: 60px;
+			margin-bottom: 20px;
+			color: #007bff;
+		}
+
+		.footer {
+			margin-top: 50px;
+			padding: 20px;
+			background-color: #343a40;
+			color: white;
+		}
+
+		.main-title {
+			text-align: center;
+			margin-bottom: 30px;
+			font-size: 28px;
+			color: #343a40;
+		}
+
+		.subtitle {
+			text-align: center;
+			color: #6c757d;
+			margin-bottom: 50px;
+		}
+
+		.btn-primary {
+			background-color: #007bff;
+			border-color: #007bff;
+		}
+
+		.btn-primary:hover {
+			background-color: #0056b3;
+			border-color: #0056b3;
+		}
+
+		.alert {
+			margin-top: 20px;
+		}
+
+		.features-section {
+			margin-top: 50px;
+		}
+
+		.feature-icon {
+			font-size: 40px;
+			color: #28a745;
+			margin-bottom: 10px;
+		}
+
+		.feature-title {
+			font-size: 18px;
+			color: rgb(0, 0, 0);
+			margin-bottom: 10px;
+		}
+
+		.feature-description {
+			color: rgb(128, 128, 128);
+			margin-bottom: 20px;
+		}
+
+		.testimonials-section {
+			margin-top: 50px;
+		}
+
+		.testimonial {
+			text-align: center;
+			padding: 20px;
+			background-color: #f8f9fa;
+			border: 1px solid #dee2e6;
+			margin-bottom: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.testimonial-text {
+			font-style: italic;
+			color: #6c757d;
+			margin-bottom: 10px;
+		}
+
+		.testimonial-author {
+			font-weight: bold;
+			color: #343a40;
+		}
+
+		/* Footer mejorado */
+		.footer-links {
+			margin-bottom: 20px;
+		}
+
+		.footer-links a {
+			color: #fff;
+			margin: 0 10px;
+			text-decoration: none;
+		}
+
+		.footer-links a:hover {
+			text-decoration: underline;
+		}
+	</style>
+	<title>Página de Inicio</title>
+</head>
+
+<body>
+
+	<div class="container">
+		<h2 class="main-title">Sistema de Gestión de Tickets</h2>
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card mb-4">
+					<div class="card-body">
+						<span class="icon">&#x1F464;</span>
+						<h5 class="card-title">Iniciar sesión como <span class="highlight">Administrador</span></h5>
+						<p class="card-text feature-description">¡Bienvenido! Accede como administrador para gestionar
+							el sistema y disfrutar de características avanzadas.</p>
+						<a href="/coordinadores/login" class="btn btn-primary btn-block">Vamos</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="card mb-4">
+					<div class="card-body">
+						<span class="icon">&#x1F468;</span>
+						<h5 class="card-title">Iniciar sesión como <span class="highlight">Cliente</span></h5>
+						<p class="card-text feature-description">Si eres cliente, inicia sesión para acceder a tus
+							servicios y realizar seguimiento de tus solicitudes.</p>
+						<a href="/estudiantes/login" class="btn btn-primary btn-block">Vamos</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sección de Características -->
+		<div class="row features-section">
+			<div class="col-md-4 d-flex align-items-stretch">
+				<div class="testimonial text-center">
+					<span class="feature-icon">&#x1F4E6;</span>
+					<p class="testimonial-text">Optimice la gestión de incidentes y solicitudes de servicio de manera
+						eficiente.</p>
+					<p class="testimonial-author">Gestión Eficiente</p>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex align-items-stretch">
+				<div class="testimonial text-center">
+					<span class="feature-icon">&#x1F4BB;</span>
+					<p class="testimonial-text">Acceda rápidamente a la información y a las herramientas para
+						resolver problemas.</p>
+					<p class="testimonial-author">Acceso Rápido</p>
+				</div>
+			</div>
+			<div class="col-md-4 d-flex align-items-stretch">
+				<div class="testimonial text-center">
+					<span class="feature-icon">&#x1F527;</span>
+					<p class="testimonial-text">Garantizamos la seguridad de sus datos y la privacidad de la
+						información.</p>
+					<p class="testimonial-author">Seguridad Garantizada</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- Sección de Testimonios -->
+		<div class="row testimonials-section">
+			<div class="col-md-12">
+				<div class="testimonial">
+					<p class="testimonial-text">Estoy muy impresionado con la facilidad de uso y la eficiencia del
+						sistema de gestión de tickets. Ha mejorado significativamente nuestra capacidad para resolver
+						problemas de manera oportuna.</p>
+					<p class="testimonial-author">- Juan Pérez, Administrador de TI</p>
+				</div>
+				<div class="testimonial">
+					<p class="testimonial-text">Como cliente, encuentro que el sistema es intuitivo y facilita el
+						seguimiento de mis solicitudes de servicio. ¡Muy recomendado!</p>
+					<p class="testimonial-author">- María Gómez, Cliente</p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<footer class="text-center footer">
+		<p>&copy; 2023 - Todos los derechos reservados.</p>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

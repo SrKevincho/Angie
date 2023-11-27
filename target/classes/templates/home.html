@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Principal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 0;
+}
+
+main {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+        }
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+        
+.navbar {
+    border-bottom: 3px solid #0056b3;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+section {
+    margin: 30px 0;
+}
+
+ h1,h2,h3 {
+    color: #343a40;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.accordion-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    cursor: pointer;
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background-color: #e2e6ea;
+}
+
+.accordion-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.accordion-body {
+    padding: 15px;
+}
+        
+.footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgb(192, 192, 192);
+    /* Color de fondo del pie de página */
+    border-top: 1px solid #dee2e6;
+    /* Línea superior del pie de página */
+}
+
+.footer p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo dentro del pie de página */
+}
+
+.footer i {
+    color: #007bff;
+    /* Color de los íconos en el pie de página */
+}
+
+.footer a {
+    text-decoration: none;
+    /* Elimina el subrayado predeterminado de los enlaces */
+    color: #007bff;
+    /* Color de los enlaces en el pie de página */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse sobre los enlaces */
+}
+
+.footer .copyright {
+    font-weight: bold;
+}
+
+.footer .contact-info {
+    margin-top: 10px;
+}
+
+.footer .contact-info p {
+    margin: 5px 0;
+}
+
+.footer .social-icons {
+    margin-top: 15px;
+}
+
+.footer .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.footer .social-icons a:hover {
+    color: #0056b3;
+}
+
+.footer .disclaimer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.footer .additional-content {
+    margin-top: 20px;
+}
+
+.footer .additional-content h3 {
+    color: #333;
+}
+
+.footer .additional-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer .additional-content li {
+    margin-bottom: 5px;
+}
+
+.footer .additional-content a {
+    color: #007bff;
+}
+
+.footer .additional-content a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+
+<body>
+        <!-- Barra de Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/home/}">TicketTechPro</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/coordinadores/}">Administradores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/estudiantes/}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/tickets}">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="display-4">Bienvenido a nuestra Plataforma de Gestión de Servicios de TI</h1>
+                <p class="lead">Proporcionamos soluciones tecnológicas eficientes y emocionantes para simplificar la
+                    gestión de incidentes y solicitudes de servicio de TI.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Interfaz Intuitiva y Atractiva</h2>
+                <p>Nuestra interfaz fácil de usar y atractiva facilita la gestión de servicios de TI, brindando una
+                    experiencia eficiente a los usuarios.</p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Experiencia Personalizada</h5>
+                        <p class="card-text">Adaptamos la interfaz según las necesidades individuales, proporcionando
+                            una experiencia personalizada para cada usuario.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Políticas de Seguridad</h2>
+                <p>Establecemos políticas de seguridad robustas para garantizar la protección de los datos y la
+                    confidencialidad de la información. La seguridad es nuestra prioridad.</p>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Seguridad en Primer Plano</h5>
+                        <p class="card-text">Implementamos medidas de seguridad avanzadas para proteger la
+                            información sensible y garantizar la integridad de los datos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="faqHeading1">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+                                    <i class="fas fa-question-circle"></i> ¿Cómo puedo abrir un nuevo ticket?
+                                    <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1"
+                            data-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Puedes abrir un nuevo ticket desde la sección "Lista Tickets". Sigue las instrucciones
+                                proporcionadas para completar el proceso.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="faqHeading2">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+                                    <i class="fas fa-question-circle"></i> ¿Cómo restablecer mi contraseña?
+                                    <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faqCollapse2" class="collapse" aria-labelledby="faqHeading2"
+                            data-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Visita la página de inicio de sesión y sigue las instrucciones para restablecer tu
+                                contraseña.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="faqHeading3">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+                                    <i class="fas fa-question-circle"></i> ¿Cómo puedo contactar al soporte técnico?
+                                    <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faqCollapse3" class="collapse" aria-labelledby="faqHeading3"
+                            data-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Puedes contactar al soporte técnico a través de la sección de contacto o enviando un
+                                correo electrónico a support@tuempresa.com.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="faqHeading4">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+                                    <i class="fas fa-question-circle"></i> ¿Cómo actualizar mis datos de usuario?
+                                    <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faqCollapse4" class="collapse" aria-labelledby="faqHeading4"
+                            data-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Puedes actualizar tus datos de usuario en la sección de configuración de la cuenta.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" id="faqHeading5">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                    data-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
+                                    <i class="fas fa-question-circle"></i> ¿Cómo agregar a un nuevo usuario a mi
+                                    equipo?
+                                    <span class="accordion-icon"><i class="fas fa-plus"></i></span>
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="faqCollapse5" class="collapse" aria-labelledby="faqHeading5"
+                            data-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Puedes agregar a un nuevo usuario desde la sección de administración de usuarios.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agrega más preguntas frecuentes según sea necesario -->
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2>Información Corporativa</h2>
+                <p>Somos una empresa dedicada a proporcionar soluciones tecnológicas emocionantes para la gestión
+                    eficiente de servicios de TI. Nos comprometemos a brindar calidad y satisfacción a nuestros
+                    clientes.</p>
+                <div class="jumbotron">
+                    <h3 class="display-5">Nuestra Misión</h3>
+                    <p class="lead">Facilitar la gestión de servicios de TI mediante soluciones tecnológicas
+                        innovadoras.</p>
+                    <hr class="my-4">
+                    <p>Trabajamos para brindar a las organizaciones herramientas que optimicen la eficiencia y
+                        simplifiquen la administración de incidentes y solicitudes de servicio.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+<div class="footer">
+    <p class="copyright">&copy; 2023 Sistema de Gestión de Tickets | <a href="mailto:info@sistemadetickets.com"><i class="fas fa-envelope"></i> info@sistemadetickets.com</a></p>
+    
+    <div class="contact-info">
+        <p>Dirección: 123 Calle Principal, Ciudad</p>
+        <p>Teléfono: +123 456 789</p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/tuempresa" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p class="disclaimer">Este sitio es solo para fines demostrativos. Todos los derechos reservados.</p>
+</div>
+
+</body>
+
+</html>

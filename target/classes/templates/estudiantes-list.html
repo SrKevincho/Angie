@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tabla de Estudiantes - Sistema de Gestión de Tickets</title>
+
+    <!-- Enlace a Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Estilos Personalizados -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            background-image: url('https://cdn.pixabay.com/photo/2017/09/06/13/29/blue-2721464_1280.jpg');
+            background-size: cover;
+			/* Ajusta el tamaño de la imagen para cubrir el fondo */
+			background-position: center center;
+			/* Centra la imagen en ambas direcciones */
+			background-repeat: no-repeat;
+			/* Evita que la imagen se repita */
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 0;
+        }
+
+        main {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            margin-bottom: 0;
+            border-collapse: collapse;
+        }
+
+        .table thead th {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+            font-weight: bold;
+        }
+
+        .table tbody td {
+            border-color: #dee2e6;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+
+        .table td,
+        .table th {
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .navbar {
+            border-bottom: 3px solid #0056b3;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+                .footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgb(192, 192, 192);
+    /* Color de fondo del pie de página */
+    border-top: 1px solid #dee2e6;
+    /* Línea superior del pie de página */
+}
+
+.footer p {
+    margin: 0; /* Elimina el margen predeterminado del párrafo dentro del pie de página */
+}
+
+.footer i {
+    color: #007bff;
+    /* Color de los íconos en el pie de página */
+}
+
+.footer a {
+    text-decoration: none;
+    /* Elimina el subrayado predeterminado de los enlaces */
+    color: #007bff;
+    /* Color de los enlaces en el pie de página */
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    /* Subrayado al pasar el mouse sobre los enlaces */
+}
+
+.footer .copyright {
+    font-weight: bold;
+}
+
+.footer .contact-info {
+    margin-top: 10px;
+}
+
+.footer .contact-info p {
+    margin: 5px 0;
+}
+
+.footer .social-icons {
+    margin-top: 15px;
+}
+
+.footer .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 18px;
+    color: #007bff;
+}
+
+.footer .social-icons a:hover {
+    color: #0056b3;
+}
+
+.footer .disclaimer {
+    margin-top: 15px;
+    font-size: 12px;
+    color: #555;
+}
+
+.footer .additional-content {
+    margin-top: 20px;
+}
+
+.footer .additional-content h3 {
+    color: #333;
+}
+
+.footer .additional-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer .additional-content li {
+    margin-bottom: 5px;
+}
+
+.footer .additional-content a {
+    color: #007bff;
+}
+
+.footer .additional-content a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+
+    <!-- Barra de Navegación -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/home/}">TicketTechPro</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/coordinadores/}">Administradores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/estudiantes/}">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/tickets}">Tickets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}">Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="mt-4">
+        <div class="container">
+            <h1 class="mb-4">Gestión de Clientes</h1>
+
+            <!-- Botón para Agregar Estudiante -->
+            <a class="btn btn-primary mb-4" th:href="@{/estudiantes/new}">Agregar Cliente</a>
+
+            <!-- Tabla de Estudiantes -->
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Tipo Documento</th>
+                            <th scope="col">Documento</th>
+                            <th scope="col">Apellidos</th>
+                            <th scope="col">Nombres</th>
+                            <th scope="col">Correo</th>
+                            <th scope="col">Teléfono</th>
+                            <th scope="col">Número Registro</th>
+                            <th scope="col">Revisado</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iteración sobre Estudiantes -->
+                        <tr th:each="estudiante : ${estudiantes}">
+                            <td th:text="${estudiante.tipoDocumento}"></td>
+                            <td th:text="${estudiante.numeroDocumento}"></td>
+                            <td th:text="${estudiante.primerApellido}"></td>
+                            <td th:text="${estudiante.primerNombre}"></td>
+                            <td th:text="${estudiante.correo}"></td>
+                            <td th:text="${estudiante.telefono}"></td>
+                            <td th:text="${estudiante.numeroRegistro}"></td>
+                            <td th:text="${estudiante.revisado}"></td>
+                            <td>
+                                <!-- Enlace para Editar Estudiante -->
+                                <a class="btn btn-warning" th:href="@{/estudiantes/edit/{id}(id = ${estudiante.id})}">
+                                    Editar
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Enlace para Eliminar Estudiante -->
+                                <a class="btn btn-danger" th:href="@{/estudiantes/delete/{id}(id = ${estudiante.id})}">
+                                    Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <div class="footer">
+    <p class="copyright">&copy; 2023 Sistema de Gestión de Tickets | <a href="mailto:info@sistemadetickets.com"><i class="fas fa-envelope"></i> info@sistemadetickets.com</a></p>
+    
+    <div class="contact-info">
+        <p>Dirección: 123 Calle Principal, Ciudad</p>
+        <p>Teléfono: +123 456 789</p>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://www.facebook.com/tuempresa" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com/tuempresa" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/tuempresa" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+
+    <p class="disclaimer">Este sitio es solo para fines demostrativos. Todos los derechos reservados.</p>
+</div>
+
+    <!-- Enlace a Bootstrap JS y Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
